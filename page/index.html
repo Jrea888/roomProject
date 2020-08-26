@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>室内空气品质的智能诊断系统</title>
+</head>
+<link rel="stylesheet" href="../styles/common.css">
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/csslunbo.css">
+<link rel="stylesheet" href="../lib/bootstrap/style/bootstrap.css">
+
+<body>
+    <div id="app">
+        <div class="title">
+            <div class="indexTitle">
+                <span>室内空气品质的智能诊断系统</span>
+            </div>
+            <div class="right" id="username">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-8">
+                        <img src="../images/user.jpg" alt="">
+                        <span id="realUser">admin</span> <span class="fontSpan">欢迎您！</span>
+                    </div>
+                    <div class="col-xs-6 col-md-4 exit">
+                        <button class="btn btn-primary" onclick="cancelExit()" value="注销退出">注销退出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top">
+            <div class="sl  ideshow">
+                <div class="swiper-container" style="width: 100%;height: 500px;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="../images/z-1.jpg" height="500" width="1024" />
+                        </div>
+                        <div class="swiper-slide"><img src="../images/z_2.jpg" height="500" width="1024" />
+                        </div>
+                        <div class="swiper-slide"><img src="../images/z_3.jpg" height="500" width="1024" />
+                        </div>
+                        <div class="swiper-slide"><img src="../images/z_4.jpg" height="500" width="1024" />
+                        </div>
+                        <div class="swiper-slide"><img src="../images/z_5.jpg" height="500" width="1024" />
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+        <div class="heng"></div>
+        <div class="navs">
+            <ul>
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="./airAccess.html">空气评价</a></li>
+                <li><a href="./userInfo.html">基本信息</a></li>
+            </ul>
+        </div>
+        <div class="content clearfix">
+            <div class="left">
+                <div class="list">
+                    <div class="listTop">
+                        <div class="text">
+                            <img src="../images/index2.png" alt="">
+                            <span>简介</span>
+                        </div>
+                    </div>
+                    <div class="listBottom index clearfix ">
+                        <div>
+                            <div style="float:left; clear: both; text-align: center;">
+                                <img src="../images/45.jpg" style="width: 350px;border-radius: 50%;border: 3px solid #d1e4d5;" alt="">
+                            </div>
+                        </div>
+                        <p>
+                            人工智能是当前计算机科学技术中的一个重要研究领域，而专家系统又是人工智能领域中发展最快、应用最广的一个重要分支。随着信息技术应用的不断深入，诊断型专家系统的信息管理已经在很多行业得到应用，其中用于室内空气品质的智能诊断系统就是一个很好的应用方面。
+                        </p>
+                        <p>
+                            本系统是基于web专家系统，结合了模糊专家系统中对于数据的隶属化，通过浏览器、应用逻辑层和数据库层三层结构的方式进行了系统的设计与实现。
+                        </p>
+                        <p>
+                            用户可通过空气评价页面进行测量值输入，通过进行一次评价，比较计算所得结果，根据最大隶属度原则，将其所计算出的min_value根据数值分为5个等级
+                        </p>
+                        <p>
+                            二次评价是将多个不同区域的M值计算出并排序，得出他们之间空气品质的优劣性。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font">
+            <p>学号：1403110104</p>
+            <p>版权所有&copy;西安科技大学计算机学院</p>
+            <p>地址：西安市临潼区陕鼓大道48号</p>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="../script/jquery.js"></script>
+    <script type="text/javascript" src="../script/lunBo1.js"></script>
+    <script type="text/javascript" src="../script/show.js"></script>
+    <script type="text/javascript">
+        var mySwiper = new Swiper('.swiper-container', {
+            effect: 'fade',
+            autoplay: true,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
+</body>
+
+</html>

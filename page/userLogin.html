@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/cssUser.css">
+    <link rel="stylesheet" href="../styles/bootstrap.css">
+</head>
+
+<body>
+    <div class="indexText">
+        <span>室内空气品质的智能诊断系统</span>
+    </div>
+    <div class="doctor" id="app">
+        <ul>
+            <li>
+                账号：<input class="dpInput" v-on:blur="checkUser" type="text" v-model="user">
+            </li>
+            <span>{{errorLoginUser}}</span>
+            <li>
+                密码：<input class="dpInput" v-on:blur="checkUserPass" type="password" v-model="userLoginWord">
+            </li>
+            <span>{{errorLoginPass}}</span>
+            <li>
+                <input class="btn btn-success" type="button" @click="userLogin" value="用户登录" style="margin: 0 5px;">
+                <input class="btn btn-primary" type="button" @click="Registered" value="用户注册">
+                <input class="btn btn-warning" type="button" @click="adminLogin" value="管理员登录">
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="../script/vue.js"></script>
+    <script type="text/javascript" src="../script/jquery.js"></script>
+    <script type="text/javascript" src="../script/show.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    user: '',
+                    userLoginWord: '',
+                    errorLoginUser: '',
+                    errorLoginPass: ''
+                };
+            },
+            methods: {
+                checkUser() {
+                    if (this.user) {
+                        this.errorLoginUser = ""
+                    } else {
+                        this.errorLoginUser = "账号不能为空";
+                    }
+                },
+                checkUserPass() {
+                    if (this.userLoginWord) {
+                        this.errorLoginPass = ""
+                    } else {
+                        this.errorLoginPass = "密码不能为空";
+                    }
+                },
+                userLogin() {
+
+                    if (this.user && this.userLoginWord) {
+                        this.sender({
+                            username: this.user,
+                            password: this.userLoginWord
+                        });
+                    } else {
+                        alert("用户和密码不能为空")
+                    }
+                },
+                sender: function(data) {
+                    $.ajax({
+                        type: "POST",
+                        url: getUrl() + "/sys/login",
+                        dataType: "json",
+                        data: data,
+                        // 默认为异步请求 设置false为同步请求 须等其他操作处理完才可以执行
+                        async: false,
+                        contentType: "application/x-www-form-urlencoded",
+                        success: function(result) {
+                            if (result.code === 0) {
+                                localStorage.setItem("username", data.username);
+                                localStorage.setItem("token", result.id);
+                                parent.location.href = "./index.html";
+                            } else if (result.code === 1) {
+                                alert(result.msg);
+                            }
+                        },
+                        error: function() {
+                            alert("请求失败");
+                        }
+                    });
+                },
+                Registered() {
+                    location.href = "userRegistered.html";
+                },
+                adminLogin() {
+                    location.href = "http://localhost:8888";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
